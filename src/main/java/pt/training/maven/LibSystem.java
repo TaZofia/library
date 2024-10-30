@@ -3,12 +3,15 @@ package pt.training.maven;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class responsible for managing different actions in the library system.
+ */
 public class LibSystem {
     private List<Book> books;
     private List<Reader> readers;
 
     /**
-     * Constructor, creates an array list of all books and readers in system.
+     * Constructor, creates an array list of all books and readers in the system.
      */
     public LibSystem() {
         this.books = new ArrayList<>();
@@ -16,7 +19,25 @@ public class LibSystem {
     }
 
     /**
-     * Adds copy of a book with a specific title.
+     * Getter.
+     *
+     * @return list of books
+     */
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    /**
+     * Getter.
+     *
+     * @return list of readers
+     */
+    public List<Reader> getReaders() {
+        return readers;
+    }
+
+    /**
+     * Adds copy of a book with a explicit title.
      *
      * @param title title of a book which will get a new copy.
      */
@@ -87,20 +108,43 @@ public class LibSystem {
         }
     }
 
+    /**
+     * Show all readers who are in system with borrowed copies.
+     */
     public void showReaders() {
         for(int i = 0; i < readers.size(); i++) {
             Reader currentReader = readers.get(i);
             System.out.print("reader ID: " + currentReader.getReaderId() + "\t login: " + currentReader.getLogin());
-            System.out.println("\t borrowed books: " + currentReader.getBorrowedBooks());
+            System.out.print("\t borrowed books: " );
+            for(int j = 0; j < currentReader.getBorrowedBooks().size(); j++){
+                System.out.print(currentReader.getBorrowedBooks().get(j).getCopyId() + ", ");
+            }
+            System.out.println();
         }
     }
+
     /**
-     * In a list of already existing books searches for a book with specific title.
+     * Shows all books which are in system with authors and all books' copies
+     */
+    public void showBooks(){
+        for(int i = 0; i < books.size(); i++){
+            Book currentBook = books.get(i);
+            System.out.print("book title: " + currentBook.getTitle() + "\t author: " + currentBook.getAuthor());
+            System.out.print("\t all copies: ");
+            for(int j = 0; j < currentBook.getCopies().size(); j++){
+                System.out.print(currentBook.getCopies().get(j).getCopyId() + ", ");
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * In a list of already existing books searches for a book with explicit title.
      *
      * @param title title of the book.
-     * @return a book from a list with specific title.
+     * @return a book from a list with explicit title.
      */
-    private Book findBookByTitle(String title) {
+    public Book findBookByTitle(String title) {
         for(int i = 0; i < books.size(); i++){
             if(books.get(i).getTitle().equals(title))
                 return books.get(i);
@@ -109,12 +153,12 @@ public class LibSystem {
     }
 
     /**
-     * In a list of already existing readers searches for a reader with specific id.
+     * In a list of already existing readers searches for a reader with unique id.
      *
      * @param readerId unique id of a user.
-     * @return a reader from a list with specific id.
+     * @return a reader from a list with unique id.
      */
-    private Reader findReaderById(int readerId) {
+    public Reader findReaderById(int readerId) {
         for(int i = 0; i < readers.size(); i++){
             if(readers.get(i).getReaderId() == (readerId))
                 return readers.get(i);

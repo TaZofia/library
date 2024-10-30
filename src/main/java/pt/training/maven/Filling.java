@@ -14,15 +14,13 @@ public class Filling {
 
         library.addBook("1984", "George Orwell");
         library.addBookCopy("1984");
-        library.addBookCopy("1984");
 
         library.addBook("Gone with the wind", "Margaret Mitchell");
         library.addBookCopy("Gone with the wind");
         library.addBookCopy("Gone with the wind");
-        library.addBookCopy("Gone with the wind");
 
         library.addBook("Pride and prejudice", "Jane Austen");
-        library.addBookCopy("Pride and prejudice");
+
     }
 
 }

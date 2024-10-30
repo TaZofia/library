@@ -2,8 +2,16 @@ package pt.training.maven;
 
 import java.util.Scanner;
 
+/**
+ * Main class of a program.
+ */
 public class Main {
 
+    /**
+     * Main method.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         LibSystem library = new LibSystem();
         Filling filling = new Filling(library);
@@ -53,12 +61,11 @@ public class Main {
                     library.showReaders();
                     break;
                 case 6:
-                    //library.showBooks();
+                    library.showBooks();
                     break;
                 default:
                     System.out.println("Invalid command, try again.");
             }
         }
-        //scanner.close();
     }
 }
