@@ -8,9 +8,9 @@ import java.util.List;
  */
 public class Reader {
     private static int idCounter = 1;
-    private int readerId;
-    private String login;
-    private List<BookCopy> borrowedBooks;
+    final private int readerId;
+    final private String login;
+    final private List<BookCopy> borrowedBooks;
 
     /**
      * Constructor, creates a reader with a explicit login.

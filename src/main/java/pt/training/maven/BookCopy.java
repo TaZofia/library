@@ -5,7 +5,7 @@ package pt.training.maven;
  */
 public class BookCopy {
     private static int idCounter = 1;
-    private int copyId;
+    final private int copyId;
     private boolean isBorrowed;
 
     /**

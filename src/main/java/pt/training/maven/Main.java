@@ -13,11 +13,11 @@ public class Main {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        LibSystem library = new LibSystem();
-        Filling filling = new Filling(library);
+        final LibSystem library = new LibSystem();
+        final Filling filling = new Filling(library);
         filling.fill();
 
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
 
         while(true) {
             //Display user options
@@ -30,7 +30,7 @@ public class Main {
             System.out.println("6. Show books");
             System.out.print("Enter command: ");
 
-            int command = scanner.nextInt();
+            final int command = scanner.nextInt();
             scanner.nextLine();
 
             // Following Controller principle: Main directs user commands to appropriate methods in LibSystem

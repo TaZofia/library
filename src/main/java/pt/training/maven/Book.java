@@ -7,9 +7,9 @@ import java.util.List;
  * Class which represents single book.
  */
 public class Book {
-    private String title;
-    private String author;
-    private List<BookCopy> copies;
+    final private String title;
+    final private String author;
+    final private List<BookCopy> copies;
 
     /**
      * Constructor, creates a book with a unique title and with explicit author.
@@ -63,8 +63,9 @@ public class Book {
      */
     public BookCopy getFirstAvailableCopy() {
         for(int i = 0; i < copies.size(); i++) {
-            if(!copies.get(i).isBorrowed())
+            if(!copies.get(i).isBorrowed()) {
                 return copies.get(i);
+            }
         }
         return null;
     }

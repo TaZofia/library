@@ -149,8 +149,9 @@ public class LibSystem {
      */
     public Book findBookByTitle(String title) {
         for(int i = 0; i < books.size(); i++){
-            if(books.get(i).getTitle().equals(title))
+            if(books.get(i).getTitle().equals(title)) {
                 return books.get(i);
+            }
         }
         return null;
     }
@@ -163,8 +164,9 @@ public class LibSystem {
      */
     public Reader findReaderById(int readerId) {
         for(int i = 0; i < readers.size(); i++){
-            if(readers.get(i).getReaderId() == readerId)
+            if(readers.get(i).getReaderId() == readerId) {
                 return readers.get(i);
+            }
         }
         return null;
     }
