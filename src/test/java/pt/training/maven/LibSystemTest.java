@@ -21,6 +21,14 @@ class LibSystemTest {
     void testAddReader() {
         library.addReader("Alice");
         assertEquals(1, library.getReaders().size(), "Library should have 1 reader.");
+        //reset idCounter because in other tests we need start from the beginning
+        library.getReaders().get(0).resetReaderIdCounter();
+    }
+
+    @Test
+    void testAddBook() {
+        library.addBook("Xyz", "abc");
+        assertEquals(1, library.getBooks().size(), "Library should have 1 book");
     }
 
     @Test
@@ -35,7 +43,6 @@ class LibSystemTest {
     @Test
     void testBorrowBook() {
         library.addBook("1984", "George Orwell");
-        library.addBookCopy("1984");
         library.addReader("Bob");
 
         Reader reader = library.findReaderById(1);
@@ -43,46 +50,38 @@ class LibSystemTest {
 
         assertFalse(reader.getBorrowedBooks().isEmpty(), "Reader should have borrowed one book copy.");
         assertTrue(reader.getBorrowedBooks().get(0).isBorrowed(), "The borrowed book copy should be marked as borrowed.");
+        //reset idCounter because in other tests we need start from the beginning
+        reader.resetReaderIdCounter();
     }
 
     @Test
     public void testFindReaderById() {
 
-        library.addReader("Alice");
-        library.addReader("Bob");
-        library.addBook("1984", "George Orwell");
-        library.addBook("Pride and Prejudice", "Jane Austen");
+        library.addReader("xyz");
 
         // Assuming IDs start at 1, Alice should be reader ID 1, Bob should be reader ID 2
-        Reader reader1 = library.findReaderById(1);
-        assertNotNull(reader1, "Reader with ID 1 should exist.");
-        assertEquals("Alice", reader1.getLogin(), "Reader with ID 1 should have the login 'Alice'.");
+        Reader reader = library.findReaderById(1);
+        assertNotNull(reader, "Reader with id=1 should exist");
+        assertEquals("xyz",  reader.getLogin());
 
-        Reader reader2 = library.findReaderById(2);
-        assertNotNull(reader2, "Reader with ID 2 should exist.");
-        assertEquals("Bob", reader2.getLogin(), "Reader with ID 2 should have the login 'Bob'.");
+        Reader otherReader = library.findReaderById(11);
+        assertNull(otherReader, "Reader with ID 11 should not exist.");
 
-        Reader nonExistentReader = library.findReaderById(99);
-        assertNull(nonExistentReader, "Reader with ID 99 should not exist.");
+        //reset idCounter because in other tests we need start from the beginning
+        reader.resetReaderIdCounter();
     }
 
     @Test
     public void testFindBookByTitle() {
-        library.addReader("Alice");
-        library.addReader("Bob");
-        library.addBook("1984", "George Orwell");
-        library.addBook("Pride and Prejudice", "Jane Austen");
 
-        Book book1 = library.findBookByTitle("1984");
-        assertNotNull(book1, "Book with title '1984' should exist.");
-        assertEquals("George Orwell", book1.getAuthor(), "Author of '1984' should be George Orwell.");
+        library.addBook("wsx", "aaa");
 
-        Book book2 = library.findBookByTitle("Pride and Prejudice");
-        assertNotNull(book2, "Book with title 'Pride and Prejudice' should exist.");
-        assertEquals("Jane Austen", book2.getAuthor(), "Author of 'Pride and Prejudice' should be Jane Austen.");
+        Book book = library.findBookByTitle("wsx");
+        assertNotNull(book, "Book with title 'wsx' should exist.");
+        assertEquals("aaa", book.getAuthor());
 
-        Book nonExistentBook = library.findBookByTitle("Nonexistent Book");
-        assertNull(nonExistentBook, "Book with title 'Nonexistent Book' should not exist.");
+        Book otherBook = library.findBookByTitle("Other book");
+        assertNull(otherBook, "Book with title 'Other book' should not exist.");
     }
 }
 

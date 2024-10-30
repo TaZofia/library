@@ -20,6 +20,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
+            //Display user options
             System.out.println();
             System.out.println("1. Add copy");
             System.out.println("2. Add a reader");
@@ -32,11 +33,12 @@ public class Main {
             int command = scanner.nextInt();
             scanner.nextLine();
 
+            // Following Controller principle: Main directs user commands to appropriate methods in LibSystem
             switch (command) {
                 case 1:
                     System.out.print("Enter title: ");
                     String title = scanner.nextLine();
-                    library.addBookCopy(title);
+                    library.addBookCopy(title);         //Low coupling: Main does not directly manipulate Book or BookCopy class
                     break;
                 case 2:
                     System.out.print("Enter login of a reader: ");

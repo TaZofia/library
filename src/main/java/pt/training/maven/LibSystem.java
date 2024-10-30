@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class responsible for managing different actions in the library system.
+ * Class responsible for managing all the actions in the library system.
  */
 public class LibSystem {
-    private List<Book> books;
-    private List<Reader> readers;
+    private List<Book> books;       //Creates the core library system (Creator principle)
+    private List<Reader> readers;   //Initializes library data (Creator principle)
 
     /**
      * Constructor, creates an array list of all books and readers in the system.
@@ -17,6 +17,8 @@ public class LibSystem {
         this.books = new ArrayList<>();
         this.readers = new ArrayList<>();
     }
+
+    //High cohesion: Keeps all book-related data and operations within the LibSystem.
 
     /**
      * Getter.
@@ -58,8 +60,8 @@ public class LibSystem {
      * @param title title of a book.
      */
     public void borrowBook(int readerId, String title) {
-        Reader reader = findReaderById(readerId);       //checking if we have a reader like that
-        Book book = findBookByTitle(title);             //checking if we have a book like that
+        Reader reader = findReaderById(readerId);       //checking if we have a reader like that (Information Expert)
+        Book book = findBookByTitle(title);             //checking if we have a book like that (Information Expert)
 
         if (reader == null) {
             System.out.println("Reader with ID " + readerId + " not found.");
@@ -75,7 +77,7 @@ public class LibSystem {
         if(firstAvailableCopy == null) {
             System.out.println("No available copies of: " + title);
         } else {
-            reader.borrowBook(firstAvailableCopy);          //if everything is ok we enable reader to borrow a book
+            reader.borrowBook(firstAvailableCopy);          //Low coupling: directly assigns the copy to the reader
         }
     }
 
@@ -88,6 +90,7 @@ public class LibSystem {
         Reader newReader = new Reader(login);
         readers.add(newReader);
         System.out.println("Added new reader: " + login);
+        System.out.println("************* nr id: " + newReader.getReaderId());
     }
 
     /**
@@ -160,7 +163,7 @@ public class LibSystem {
      */
     public Reader findReaderById(int readerId) {
         for(int i = 0; i < readers.size(); i++){
-            if(readers.get(i).getReaderId() == (readerId))
+            if(readers.get(i).getReaderId() == readerId)
                 return readers.get(i);
         }
         return null;

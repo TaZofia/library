@@ -56,8 +56,14 @@ public class Reader {
      * @param copy copy we want to borrow
      */
     public void borrowBook(BookCopy copy) {
-        copy.borrow();
+        copy.borrow();                  //Borrowing logic encapsulated in BookCopy class (Information Expert)
         borrowedBooks.add(copy);
     }
 
+    /**
+     * Resets idCounter by assigning to 1
+     */
+    public void resetReaderIdCounter() {
+        idCounter = 1;
+    }
 }

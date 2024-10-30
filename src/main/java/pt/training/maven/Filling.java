@@ -7,6 +7,7 @@ public class Filling {
         this.library = library;
     }
 
+    //Adding initial readers (Creator principle)
     public void fill(){
         library.addReader("John");
         library.addReader("Ben");

@@ -40,4 +40,11 @@ public class BookCopy {
     public int getCopyId() {
         return copyId;
     }
-}
+
+    /**
+     * Resets idCounter by assigning to 1
+     */
+    public void resetCopyIdCounter() {
+        idCounter = 1;
+    }
+ }
