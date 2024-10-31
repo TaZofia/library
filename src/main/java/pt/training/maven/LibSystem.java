@@ -95,7 +95,6 @@ public class LibSystem {
         Reader newReader = new Reader(login);
         readers.add(newReader);
         System.out.println("Added new reader: " + login);
-        System.out.println("************* nr id: " + newReader.getReaderId());
     }
 
     /**
