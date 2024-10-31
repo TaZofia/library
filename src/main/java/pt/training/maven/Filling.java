@@ -1,14 +1,26 @@
 package pt.training.maven;
 
+/**
+ * Class responsible for initializing data.
+ */
 public class Filling {
-    private LibSystem library;
+    final private LibSystem library;
 
-    public Filling(LibSystem library){
+    /**
+     * Constructor.
+     *
+     * @param library object of LibSystem
+     */
+    public Filling(final LibSystem library) {
         this.library = library;
     }
 
     //Adding initial readers (Creator principle)
-    public void fill(){
+
+    /**
+     * Method with calls of other methods to add data.
+     */
+    public void fill() {
         library.addReader("John");
         library.addReader("Ben");
         library.addReader("Julia");
@@ -21,7 +33,5 @@ public class Filling {
         library.addBookCopy("Gone with the wind");
 
         library.addBook("Pride and prejudice", "Jane Austen");
-
     }
-
 }

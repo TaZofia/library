@@ -3,6 +3,11 @@ package pt.training.maven;
 import java.util.ArrayList;
 import java.util.List;
 
+//If we want to add managing all this data by database we should create 3 repositories:
+//BookRepository, ReaderRepository, BookCopyRepository. Objects of these repositories will be
+//created in this class (LibSystem) and in every method of this class will be a call of
+//appropriate method from these repositories.
+
 /**
  * Class responsible for managing all the actions in the library system.
  */
